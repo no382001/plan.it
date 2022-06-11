@@ -1,0 +1,20 @@
+PLAN.IT
+
+a pastebin like service that lets you share a calendar with your friends
+- to plan certain events that seem hard to organize
+
+each calendar has a unique url, only people with the unique url can access that calendar
+
+	-maybe drawing support would be a cool idea
+
+
+
+
+
+	-add first page 
+		-create new
+		-or load with url
+
+	-view paste
+		-edit paste
+			-implement alter element

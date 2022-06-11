@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `content` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  	`url` varchar(50) NOT NULL,
+  	`title` varchar(55) NOT NULL,
+  	`content` varchar(1000) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `content` (`id`, `url`, `title`,`content`) VALUES (1, '/1283asdas214331', 'element title','element contentasdassssssssssssssssssssssssssss');
+
+//id is not req	
+
+
+CREATE USER 'plan'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON data. * TO 'plan'@'localhost';
+
+ALTER TABLE content
+ADD title varchar(55);
+
+ALTER TABLE [content] DROP COLUMN id
+ALTER TABLE [content] ADD id INT IDENTITY(1,1)
