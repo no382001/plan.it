@@ -15,6 +15,10 @@ each calendar has a unique url, only people with the unique url can access that 
 		-create new
 		-or load with url
 
-	-view paste
-		-edit paste
-			-implement alter element
+	-view
+		load in php
+
+		edit in js
+
+		autosave in cookie
+			save in 
