@@ -11,14 +11,8 @@ each calendar has a unique url, only people with the unique url can access that 
 
 
 
-	-add first page 
-		-create new
-		-or load with url
+-TBD
 
-	-view
-		load in php
+	-changelog
 
-		edit in js
-
-		autosave in cookie
-			save in 
+	-db structure

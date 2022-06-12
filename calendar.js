@@ -128,12 +128,18 @@ $(".date-picker").mousedown(function(){
     s += "." + $(this).attr("data-month");
     s += "." + $(this).attr("data-date");
 
-    if($(this).hasClass("_selected")){
+
+    if($(this).css("background-color")===curr_color){   //deselect clicked element
         $(this).removeClass("_selected");
-        selected_dates.delete(s); 
-    }else{
+        $(this).css("background-color","white");
+        selected_dates.delete(s);
+    }else if(!$(this).css("background-color","white")){         //clicked element is it is selected
+        $(this).css("background-color",curr_color);
+        selected_dates.set(s,curr_color);
+    }else{                                                      //clicked element is not selected
         $(this).addClass("_selected");
-        selected_dates.set(s,null);
+        $(this).css("background-color",curr_color);
+        selected_dates.set(s,curr_color);
     }
 
 });
@@ -150,8 +156,16 @@ $(".post-btn").mousedown(function(){
     //  $_SESSION["notes"] = $_POST["notes"];
     
     */
-
     console.log(Object.fromEntries(selected_dates));
 });
 
 
+var curr_color = $(".selected-color").css("background-color");
+
+$(".circle").mousedown(function(){
+    if(!$(this).hasClass("selected-color")){
+        $(".selected-color").removeClass("selected-color");
+        $(this).addClass("selected-color");
+        curr_color = $(this).css("background-color");
+    }
+});

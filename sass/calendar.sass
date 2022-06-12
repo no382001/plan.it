@@ -69,11 +69,13 @@
     float: right
 
 .footer-container-calendar 
+    position: absolute
+    top: 25em
+    width: 28em
     margin-top: 1em
     border-top: 1px solid #dadada
     padding: 10px 0
 
-.footer-container-calendar
     select
         font-size: 1em
         font-family: monospace
@@ -83,6 +85,8 @@
         padding: .2em .2em
 
 .post-calendar-notes
+    position: absolute
+    top: 29em
     textarea
         border: 1px solid black
         position: relative
@@ -91,5 +95,31 @@
         max-width: 27.5em
 
 ._selected
-    background-color: green
     color: white !important
+
+.color-selector
+    position: absolute
+    top: 23em
+    .circle
+        background-color: green
+        border-radius: 50%
+        width: 1.7em
+        height: 1.7em
+        display: inline-block
+        margin-top: 0.2em
+        margin-left: 0.2em
+        float: left
+        border: 0.1em solid transparent
+    .circle:hover
+        cursor: pointer
+        outline: 1px solid black
+    .pink
+        background-color: pink
+    .blue
+        background-color: lightblue
+    .green
+        background-color: lightgreen
+    .red
+        background-color: indianred
+    .selected-color
+        outline: 2px solid black !important

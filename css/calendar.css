@@ -62,27 +62,58 @@
   float: right; }
 
 .footer-container-calendar {
+  position: absolute;
+  top: 25em;
+  width: 28em;
   margin-top: 1em;
   border-top: 1px solid #dadada;
   padding: 10px 0; }
+  .footer-container-calendar select {
+    font-size: 1em;
+    font-family: monospace;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 0.2em 0.2em; }
 
-.footer-container-calendar select {
-  font-size: 1em;
-  font-family: monospace;
-  cursor: pointer;
-  display: inline-block;
-  border: 1px solid black;
-  padding: 0.2em 0.2em; }
-
-.post-calendar-notes textarea {
-  border: 1px solid black;
-  position: relative;
-  margin: auto;
-  width: 27.5em;
-  max-width: 27.5em; }
+.post-calendar-notes {
+  position: absolute;
+  top: 29em; }
+  .post-calendar-notes textarea {
+    border: 1px solid black;
+    position: relative;
+    margin: auto;
+    width: 27.5em;
+    max-width: 27.5em; }
 
 ._selected {
-  background-color: green;
   color: white !important; }
+
+.color-selector {
+  position: absolute;
+  top: 23em; }
+  .color-selector .circle {
+    background-color: green;
+    border-radius: 50%;
+    width: 1.7em;
+    height: 1.7em;
+    display: inline-block;
+    margin-top: 0.2em;
+    margin-left: 0.2em;
+    float: left;
+    border: 0.1em solid transparent; }
+  .color-selector .circle:hover {
+    cursor: pointer;
+    outline: 1px solid black; }
+  .color-selector .pink {
+    background-color: pink; }
+  .color-selector .blue {
+    background-color: lightblue; }
+  .color-selector .green {
+    background-color: lightgreen; }
+  .color-selector .red {
+    background-color: indianred; }
+  .color-selector .selected-color {
+    outline: 2px solid black !important; }
 
 /*# sourceMappingURL=calendar.css.map */

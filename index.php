@@ -62,6 +62,13 @@ session_start();
                  </select>
                  <select id="year" onchange="jump()"></select>       
             </div>
+            <div class="color-selector">
+                <div class="circle pink selected-color"></div>
+                <div class="circle blue"></div>
+                <div class="circle green"></div>
+                <div class="circle red"></div>
+            </div>
+
             <div class="post-calendar-notes">
                 <textarea> notes regarding the events go here</textarea>
             </div>
@@ -74,14 +81,10 @@ session_start();
         <button type="SUBMIT">clear session</button>
     </form>
     <button class="post-btn">push</button>
-<?php
-if($_SESSION['query-result'] != null){
-    echo "<h1>current session</h1>";
-    echo "<p>".$_SESSION['query-result']['url']."</p>";
-    echo "<p>".$_SESSION['query-result']['title']."</p>";
-    //echo "<a href='view.php'>view session</a>";
-}
-?>
+    <h1>changelog:</h1>
+    <p>1.234982734</p>
+    <p>2.32489</p>
+    <p>3.3481jhs</p>
 </div>
 
 </body>
