@@ -21,6 +21,12 @@ body {
   text-align: center; }
   .first-wrap input {
     width: 8em; }
+  .first-wrap h1 {
+    font-size: 1em; }
+  .first-wrap a {
+    font-size: 0.8em;
+    text-align: center;
+    display: block; }
 
 .second-wrap {
   border: 0.1em dotted black;
@@ -45,11 +51,5 @@ body {
     position: relative;
     float: right;
     top: 6em; }
-
-.third-wrap {
-  width: 9em;
-  line-height: 0.7em;
-  font-size: 0.6em;
-  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

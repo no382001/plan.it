@@ -103,6 +103,29 @@ function showCalendar(month, year) {
                tbl.appendChild(row);
     }
 
+
+    $(".date-picker").mousedown(function(){
+
+        let s = "";
+        s += $(this).attr("data-year");
+        s += "." + $(this).attr("data-month");
+        s += "." + $(this).attr("data-date");
+
+
+        if($(this).css("background-color")===curr_color){   //deselect clicked element
+            $(this).removeClass("_selected");
+            $(this).css("background-color","white");
+            selected_dates.delete(s);
+        }else if(!$(this).css("background-color","white")){         //clicked element is it is selected
+            $(this).css("background-color",curr_color);
+            selected_dates.set(s,curr_color);
+        }else{                                                      //clicked element is not selected
+            $(this).addClass("_selected");
+            $(this).css("background-color",curr_color);
+            selected_dates.set(s,curr_color);
+        }
+    });
+
 }
 
 function daysInMonth(iMonth, iYear) {
@@ -121,28 +144,6 @@ const selected_dates = new Map();
 //const map2 = new Map(Object.entries(obj));
 // Map(2) { 'foo' => 'bar', 'baz' => 42 }
 
-$(".date-picker").mousedown(function(){
-
-    let s = "";
-    s += $(this).attr("data-year");
-    s += "." + $(this).attr("data-month");
-    s += "." + $(this).attr("data-date");
-
-
-    if($(this).css("background-color")===curr_color){   //deselect clicked element
-        $(this).removeClass("_selected");
-        $(this).css("background-color","white");
-        selected_dates.delete(s);
-    }else if(!$(this).css("background-color","white")){         //clicked element is it is selected
-        $(this).css("background-color",curr_color);
-        selected_dates.set(s,curr_color);
-    }else{                                                      //clicked element is not selected
-        $(this).addClass("_selected");
-        $(this).css("background-color",curr_color);
-        selected_dates.set(s,curr_color);
-    }
-
-});
 
 $(".post-btn").mousedown(function(){
     /*

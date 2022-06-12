@@ -70,21 +70,23 @@ session_start();
             </div>
 
             <div class="post-calendar-notes">
-                <textarea> notes regarding the events go here</textarea>
+                <textarea>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit egestas elit in laoreet. Vestibulum nulla nibh, laoreet ut diam nec, molestie viverra sem. Vivamus vel mi nec mauris aliquet ultrices vel ut felis. Donec consequat congue massa ac finibus. Ut a iaculis est. Nulla auctor leo nec orci mattis posuere. In porttitor nibh et neque blandit, vulputate dictum nisi hendrerit.
+
+</textarea>
             </div>
         </div>
     </div>
 </div>
 
-<div class="third-wrap">
+<div class="first-wrap">
     <form action="clear_session.php" method="POST">
         <button type="SUBMIT">clear session</button>
     </form>
     <button class="post-btn">push</button>
     <h1>changelog:</h1>
-    <p>1.234982734</p>
-    <p>2.32489</p>
-    <p>3.3481jhs</p>
+    <a href="#">ver.1</a>
+    <a href="#">ver.2</a>
+    <a href="#">ver.3</a>
 </div>
 
 </body>
