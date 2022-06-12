@@ -20,6 +20,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calendar.css">
     <title>plan.it</title>
 </head>
 <body>
@@ -32,36 +33,41 @@ session_start();
 </div>
 
 <div class="second-wrap">
-    <?php 
-
-    if ($_SESSION['query-result'] == null) {
-        echo '<form action="push_content.php" method="POST">';
-    }else{
-        echo '<form action="alter_content.php" method="POST">';
-    }
-
-        if ($_SESSION['query-result'] != null) {
-            echo '
-<h1>'.$_SESSION['query-result']['url'].'</h1>
-<input id="title"type="text" name="title" placeholder="title" value="'.$_SESSION['query-result']['title'].'" required>
-<textarea id="text" type="text" name="text" required>'.$_SESSION['query-result']['text'].'</textarea>';
-        }else{
-            echo '
-            <input id="title"type="text" name="title" placeholder="title" value="Lorem ipsum" required>
-        <textarea id="text" type="text" name="text" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a massa nec purus molestie lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ullamcorper quis augue sit amet ultricies. Phasellus pretium velit magna, malesuada vehicula turpis elementum ac. Nunc quis velit dignissim</textarea>';
-        }
-
-         if ($_SESSION['query-result'] == null) {
-        echo '<button type="SUBMIT">push content</button>';
-    }else{
-        echo '<button type="SUBMIT">alter content</button>';
-    }
-
-    ?>
-    </form>
+    <div class="calendar-wrapper">   
+        <div class="container-calendar">
+            <h3 id="monthAndYear"></h3>
+            <div class="button-container-calendar">
+                <button id="previous" onclick="previous()">&#8249;</button>
+                <button id="next" onclick="next()">&#8250;</button>
+            </div>
+            <table class="table-calendar" id="calendar" data-lang="en">
+                <thead id="thead-month"></thead>
+                <tbody id="calendar-body"></tbody>
+            </table>
+            <div class="footer-container-calendar">
+                <label for="month">select: </label>
+                <select id="month" onchange="jump()">
+                     <option value=0>jan</option>
+                     <option value=1>feb</option>
+                     <option value=2>mar</option>
+                     <option value=3>apr</option>
+                     <option value=4>may</option>
+                     <option value=5>jun</option>
+                     <option value=6>jul</option>
+                     <option value=7>aug</option>
+                     <option value=8>sep</option>
+                     <option value=9>oct</option>
+                     <option value=10>nov</option>
+                     <option value=11>dec</option>
+                 </select>
+                 <select id="year" onchange="jump()"></select>       
+            </div>
+            <div class="post-calendar-notes">
+                <textarea> notes regarding the events go here</textarea>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 
 <div class="third-wrap">
     <form action="clear_session.php" method="POST">
@@ -78,4 +84,6 @@ if($_SESSION['query-result'] != null){
 </div>
 
 </body>
+
+<script type="text/javascript" src="calendar.js"></script>
 </html>
