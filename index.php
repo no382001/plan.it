@@ -73,6 +73,7 @@ session_start();
     <form action="clear_session.php" method="POST">
         <button type="SUBMIT">clear session</button>
     </form>
+    <button class="post-btn">push</button>
 <?php
 if($_SESSION['query-result'] != null){
     echo "<h1>current session</h1>";
@@ -84,6 +85,6 @@ if($_SESSION['query-result'] != null){
 </div>
 
 </body>
-
+<script type="text/javascript" src="jq.js"></script>
 <script type="text/javascript" src="calendar.js"></script>
 </html>

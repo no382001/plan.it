@@ -1,3 +1,5 @@
+//START---------------------------------------------- stolen barely modified
+
 function generate_year_range(start, end) {
     var years = "";
     for (var year = start; year <= end; year++) {
@@ -14,31 +16,22 @@ selectMonth = document.getElementById("month");
 
 
 createYear = generate_year_range(2022, 2025);
-/** or
- * createYear = generate_year_range( 1970, currentYear );
- */
 
 document.getElementById("year").innerHTML = createYear;
 
-var calendar = document.getElementById("calendar");
-var lang = calendar.getAttribute('data-lang');
+const calendar = document.getElementById("calendar");
+const lang = calendar.getAttribute('data-lang');
+const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+var days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
-var monthDefault = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
-
-var dayDefault = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-
-
-const months = monthDefault;
-const days = dayDefault;
-
-var $dataHead = "<tr>";
+var dataHead = "<tr>";
 for (dhead in days) {
-    $dataHead += "<th data-days='" + days[dhead] + "'>" + days[dhead] + "</th>";
+    dataHead += "<th data-days='" + days[dhead] + "'>" + days[dhead] + "</th>";
 }
-$dataHead += "</tr>";
+dataHead += "</tr>";
 
-//alert($dataHead);
-document.getElementById("thead-month").innerHTML = $dataHead;
+//alert(dataHead);
+document.getElementById("thead-month").innerHTML = dataHead;
 
 
 monthAndYear = document.getElementById("monthAndYear");
@@ -115,3 +108,50 @@ function showCalendar(month, year) {
 function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
+
+//END---------------------------------------------- stolen barely modified
+
+
+
+//guaranteed O(log n) lookup
+const selected_dates = new Map();
+
+//const obj = Object.fromEntries(map1);
+// { foo: 'bar', baz: 42 }
+//const map2 = new Map(Object.entries(obj));
+// Map(2) { 'foo' => 'bar', 'baz' => 42 }
+
+$(".date-picker").mousedown(function(){
+
+    let s = "";
+    s += $(this).attr("data-year");
+    s += "." + $(this).attr("data-month");
+    s += "." + $(this).attr("data-date");
+
+    if($(this).hasClass("_selected")){
+        $(this).removeClass("_selected");
+        selected_dates.delete(s); 
+    }else{
+        $(this).addClass("_selected");
+        selected_dates.set(s,null);
+    }
+
+});
+
+$(".post-btn").mousedown(function(){
+    /*
+    
+    var title = title;
+    var json = selected_dates;
+    var notes = text;
+    $.post("update.php", {title:res_id, json:selected_dates, notes:text});
+    //  $_SESSION["title"] = $_POST["title"]; 
+    //  $_SESSION["json"] = $_POST["json"];
+    //  $_SESSION["notes"] = $_POST["notes"];
+    
+    */
+
+    console.log(Object.fromEntries(selected_dates));
+});
+
+
