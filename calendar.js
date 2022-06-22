@@ -1,3 +1,13 @@
+//guaranteed O(log n) lookup
+const selected_dates = new Map();
+
+//const obj = Object.fromEntries(map1);
+// { foo: 'bar', baz: 42 }
+//const map2 = new Map(Object.entries(obj));
+// Map(2) { 'foo' => 'bar', 'baz' => 42 }
+
+
+
 //START---------------------------------------------- stolen barely modified
 
 function generate_year_range(start, end) {
@@ -93,12 +103,17 @@ function showCalendar(month, year) {
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                     cell.className = "date-picker selected";
                 }
+
+                let s = "" + year + "." + (month + 1) + "." + date;
+
+                if(selected_dates.get(s)){
+                    cell.classList.add("_selected");
+                    cell.style.backgroundColor = selected_dates.get(s);
+                }
                 
                 row.appendChild(cell);
                 date++;
             }
-
-
         }
                tbl.appendChild(row);
     }
@@ -106,17 +121,17 @@ function showCalendar(month, year) {
 
     $(".date-picker").mousedown(function(){
 
+        //compile date and time hash
         let s = "";
         s += $(this).attr("data-year");
         s += "." + $(this).attr("data-month");
         s += "." + $(this).attr("data-date");
 
-
         if($(this).css("background-color")===curr_color){   //deselect clicked element
             $(this).removeClass("_selected");
             $(this).css("background-color","white");
             selected_dates.delete(s);
-        }else if(!$(this).css("background-color","white")){         //clicked element is it is selected
+        }else if(!$(this).css("background-color","white")){         //clicked element is selected
             $(this).css("background-color",curr_color);
             selected_dates.set(s,curr_color);
         }else{                                                      //clicked element is not selected
@@ -136,13 +151,6 @@ function daysInMonth(iMonth, iYear) {
 
 
 
-//guaranteed O(log n) lookup
-const selected_dates = new Map();
-
-//const obj = Object.fromEntries(map1);
-// { foo: 'bar', baz: 42 }
-//const map2 = new Map(Object.entries(obj));
-// Map(2) { 'foo' => 'bar', 'baz' => 42 }
 
 
 $(".post-btn").mousedown(function(){
@@ -155,7 +163,6 @@ $(".post-btn").mousedown(function(){
     //  $_SESSION["title"] = $_POST["title"]; 
     //  $_SESSION["json"] = $_POST["json"];
     //  $_SESSION["notes"] = $_POST["notes"];
-    
     */
     console.log(Object.fromEntries(selected_dates));
 });
