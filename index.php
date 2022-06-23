@@ -39,13 +39,13 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
 <div class="second-wrap">
     <div class="calendar-wrapper">   
         <div class="container-calendar">
-            <div id="calendar-title"><?php
+            <textarea class="calendar-title"><?php
             if($_SESSION['query-result']['title'] != NULL){
                 echo $_SESSION['query-result']['title'];
             }else{
                 echo "";
             }
-            ?></div>
+            ?></textarea>
             <h3 id="monthAndYear"></h3>
             <div class="button-container-calendar">
                 <button id="previous" onclick="previous()">&#8249;</button>
@@ -81,7 +81,7 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
             </div>
 
             <div class="post-calendar-notes">
-                <textarea id="textarea"><?php
+                <textarea id="textarea" oninput='this.style.height="";this.style.height=this.scrollHeight+"px"'><?php
                     if($_SESSION['query-result']['notes'] != NULL){
                         echo $_SESSION['query-result']['notes'];
                     }else{

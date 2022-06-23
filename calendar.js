@@ -11,7 +11,7 @@ if(calendar_content){
 }
 
 
-//START---------------------------------------------- stolen barely modified
+//START----------------------------------------------
 
 function generate_year_range(start, end) {
     var years = "";
@@ -43,49 +43,34 @@ for (dhead in days) {
 }
 dataHead += "</tr>";
 
-//alert(dataHead);
 document.getElementById("thead-month").innerHTML = dataHead;
-
-
 monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
-
 function next() {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
     currentMonth = (currentMonth + 1) % 12;
     showCalendar(currentMonth, currentYear);
 }
-
 function previous() {
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
     showCalendar(currentMonth, currentYear);
 }
-
 function jump() {
     currentYear = parseInt(selectYear.value);
     currentMonth = parseInt(selectMonth.value);
     showCalendar(currentMonth, currentYear);
 }
-
 function showCalendar(month, year) {
-
     const firstDay = ( new Date( year, month ) ).getDay();
-
     const tbl = document.getElementById("calendar-body");
-
     tbl.innerHTML = "";
-
     monthAndYear.innerHTML = months[month] + " " + year;
     selectYear.value = year;
     selectMonth.value = month;
-
-    // creating all cells
     var date = 1;
-    for ( var i = 0; i < 6; i++ ) {
-        
-        var row = document.createElement("tr");
-        
+    for ( var i = 0; i < 6; i++ ) {   
+        var row = document.createElement("tr");     
         for ( var j = 0; j < 7; j++ ) {
             if ( i === 0 && j < firstDay ) {
                 cell = document.createElement( "td" );
@@ -102,34 +87,26 @@ function showCalendar(month, year) {
                 cell.setAttribute("data-month_name", months[month]);
                 cell.className = "date-picker";
                 cell.innerHTML = "<span>" + date + "</span>";
-
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                     cell.className = "date-picker selected";
                 }
-
                 let s = "" + year + "." + (month + 1) + "." + date;
-
                 if(selected_dates.get(s)){
                     cell.classList.add("_selected");
                     cell.style.backgroundColor = selected_dates.get(s);
-                }
-                
+                }              
                 row.appendChild(cell);
                 date++;
             }
         }
                tbl.appendChild(row);
     }
-
-
     $(".date-picker").mousedown(function(){
-
         //compile date and time hash
         let s = "";
         s += $(this).attr("data-year");
         s += "." + $(this).attr("data-month");
         s += "." + $(this).attr("data-date");
-
         if($(this).css("background-color")===curr_color){   //deselect clicked element
             $(this).removeClass("_selected");
             $(this).css("background-color","white");
@@ -143,33 +120,23 @@ function showCalendar(month, year) {
             selected_dates.set(s,curr_color);
         }
     });
-
 }
-
 function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
-
-//END---------------------------------------------- stolen barely modified
-
-
-$(".post-btn").mousedown(function(){
-    
+//END----------------------------------------------
+$(".post-btn").mousedown(function(){  
     let title = document.getElementById("calendar-title").innerText;
     let json = JSON.stringify(Object.fromEntries(selected_dates));
     //const obj = Object.fromEntries(map1);
     // { foo: 'bar', baz: 42 }
     let notes = document.getElementById("textarea").value;
-
     $.post("push_content.php", {title : title, json : json, notes : notes}, function(status){
         //console.log(status);
         location.reload();  
     });
-
 });
-
 var curr_color = $(".selected-color").css("background-color");
-
 $(".circle").mousedown(function(){
     if(!$(this).hasClass("selected-color")){
         $(".selected-color").removeClass("selected-color");
