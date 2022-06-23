@@ -121,5 +121,12 @@ textarea {
     background-color: indianred; }
   .color-selector .selected-color {
     outline: 2px solid black !important; }
+  .color-selector .good {
+    background-color: white;
+    border: 0.1em solid black;
+    border-radius: 40%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.7em; }
 
 /*# sourceMappingURL=calendar.css.map */
