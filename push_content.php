@@ -45,6 +45,7 @@ $_SESSION['query-result'] = [
                             'notes' => $_POST['notes'],
                             ];
 
-echo "success! your key is ".$url;
+echo $url;
+
 
 ?>

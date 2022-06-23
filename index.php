@@ -6,10 +6,8 @@ session_start();
 $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
 //localhost:port/     should automatically handle request with any url
 
-//$clean_url = substr($_SERVER['REQUEST_URI'],1);  
-//index.php/asdi2234n1
-//          ^ should grab this "hash part"
-// ^ but now without .htaccess it instead grabs this
+//$clean_url = substr($_SERVER['REQUEST_URI'],1);
+//$clean_url = $_GET['q'];
 
 ?>
 
@@ -22,6 +20,7 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
 
 <html>
 <head>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
