@@ -1,6 +1,11 @@
-//guaranteed O(log n) lookup
-const selected_dates = new Map();
 
+//guaranteed O(log n) lookup
+selected_dates = new Map();
+if(calendar_content){
+    //if the variable has been parsed from the global php variable
+    // parse the json and convert into a map
+    selected_dates = new Map(Object.entries(JSON.parse(calendar_content)));
+}
 //const obj = Object.fromEntries(map1);
 // { foo: 'bar', baz: 42 }
 //const map2 = new Map(Object.entries(obj));
@@ -155,9 +160,6 @@ $(".post-btn").mousedown(function(){
     let title = document.getElementById("calendar-title").innerText;
     let json = JSON.stringify(Object.fromEntries(selected_dates));
     let notes = document.getElementById("textarea").value;
-    console.log(document.getElementById("calendar-title").innerText);
-    console.log(Object.fromEntries(selected_dates));
-    console.log(document.getElementById("textarea").value);
     
     $.post("push_content.php", {title : title, json : json, notes : notes});
 

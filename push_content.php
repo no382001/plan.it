@@ -41,8 +41,8 @@ $conn->close();
 $_SESSION['query-result'] = [
                             'url' => $url,
                             'title' => $_POST['title'],
-                            'content' => $_POST['json'],
-                            'text' => $_POST['text'],
+                            'json' => $_POST['json'],
+                            'notes' => $_POST['notes'],
                             ];
 
 echo "success! your key is ".$url;

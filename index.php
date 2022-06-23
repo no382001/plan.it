@@ -3,7 +3,7 @@
 <?php
 
 session_start();
-
+$session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
 //localhost:port/     should automatically handle request with any url
 
 //$clean_url = substr($_SERVER['REQUEST_URI'],1);  
@@ -15,6 +15,11 @@ session_start();
 
 
 <!DOCTYPE html>
+
+<script type="text/javascript">
+    var calendar_content = '<?php echo $session['json']; ?>';
+</script>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -35,7 +40,13 @@ session_start();
 <div class="second-wrap">
     <div class="calendar-wrapper">   
         <div class="container-calendar">
-            <div id="calendar-title">title goes here</div>
+            <div id="calendar-title"><?php
+            if($_SESSION['query-result']['title'] != NULL){
+                echo $_SESSION['query-result']['title'];
+            }else{
+                echo "";
+            }
+            ?></div>
             <h3 id="monthAndYear"></h3>
             <div class="button-container-calendar">
                 <button id="previous" onclick="previous()">&#8249;</button>
@@ -71,7 +82,13 @@ session_start();
             </div>
 
             <div class="post-calendar-notes">
-                <textarea id="textarea">Lorem ipsum</textarea>
+                <textarea id="textarea"><?php
+                    if($_SESSION['query-result']['notes'] != NULL){
+                        echo $_SESSION['query-result']['notes'];
+                    }else{
+                        echo "";
+                    }
+                    ?></textarea>
             </div>
         </div>
     </div>
@@ -82,10 +99,8 @@ session_start();
         <button type="SUBMIT">clear session</button>
     </form>
     <button class="post-btn">push</button>
-    <h1>changelog:</h1>
-    <a href="#">ver.1</a>
-    <a href="#">ver.2</a>
-    <a href="#">ver.3</a>
+    <h1>url:</h1>
+    <a><?php echo $_SESSION['query-result']['url'];?></a>
 </div>
 
 </body>
