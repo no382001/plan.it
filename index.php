@@ -35,6 +35,7 @@ session_start();
 <div class="second-wrap">
     <div class="calendar-wrapper">   
         <div class="container-calendar">
+            <div id="calendar-title">title goes here</div>
             <h3 id="monthAndYear"></h3>
             <div class="button-container-calendar">
                 <button id="previous" onclick="previous()">&#8249;</button>
@@ -70,9 +71,7 @@ session_start();
             </div>
 
             <div class="post-calendar-notes">
-                <textarea>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit egestas elit in laoreet. Vestibulum nulla nibh, laoreet ut diam nec, molestie viverra sem. Vivamus vel mi nec mauris aliquet ultrices vel ut felis. Donec consequat congue massa ac finibus. Ut a iaculis est. Nulla auctor leo nec orci mattis posuere. In porttitor nibh et neque blandit, vulputate dictum nisi hendrerit.
-
-</textarea>
+                <textarea id="textarea">Lorem ipsum</textarea>
             </div>
         </div>
     </div>

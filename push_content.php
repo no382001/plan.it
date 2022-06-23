@@ -1,9 +1,3 @@
-<!-- https://stackoverflow.com/questions/33138756/create-unique-url-in-php-for-each-entry -->
-
-<!-- https://github.com/vinkla/hashids           should check this out, looks like a good one --> 
-
-<!-- otherwise use this with MVP -->
-
 <?php 
 session_start();
 
@@ -23,7 +17,6 @@ function keygen()
     return $key;
 }
 
-
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'plan';
 $DATABASE_PASS = 'password';
@@ -34,15 +27,12 @@ if ( mysqli_connect_errno() ) {
     exit('failed to connect to mysql: ' . mysqli_connect_error());
 }
 
-//check if data is populated
-if ( !isset($_POST['text']) ) {
-    exit('text is not filled in, post is without value, even tho this shouldnt happen');
-}
+
 $url = keygen();
 
-$stmt = $conn->prepare('INSERT INTO content (`url`,`title`,`content`) VALUES (?,?,?)');
+$stmt = $conn->prepare('INSERT INTO content (`url`,`title`,`json`,`notes`) VALUES (?,?,?,?)');
 
-$stmt->bind_param('sss', $url,$_POST['title'],$_POST['text']);
+$stmt->bind_param('ssss', $url, $_POST['title'], $_POST['json'], $_POST['notes']);
 $stmt->execute();
 
 $stmt->close();
@@ -51,11 +41,10 @@ $conn->close();
 $_SESSION['query-result'] = [
                             'url' => $url,
                             'title' => $_POST['title'],
+                            'content' => $_POST['json'],
                             'text' => $_POST['text'],
                             ];
 
 echo "success! your key is ".$url;
-echo "<br><a href='index.php'>return</a>"
-
 
 ?>

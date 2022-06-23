@@ -15,7 +15,7 @@ CREATE USER 'plan'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON data. * TO 'plan'@'localhost';
 
 ALTER TABLE content
-ADD title varchar(55);
+ADD text varchar(1000);
 
 ALTER TABLE [content] DROP COLUMN id
 ALTER TABLE [content] ADD id INT IDENTITY(1,1)

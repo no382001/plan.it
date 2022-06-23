@@ -150,23 +150,18 @@ function daysInMonth(iMonth, iYear) {
 //END---------------------------------------------- stolen barely modified
 
 
-
-
-
 $(".post-btn").mousedown(function(){
-    /*
     
-    var title = title;
-    var json = selected_dates;
-    var notes = text;
-    $.post("update.php", {title:res_id, json:selected_dates, notes:text});
-    //  $_SESSION["title"] = $_POST["title"]; 
-    //  $_SESSION["json"] = $_POST["json"];
-    //  $_SESSION["notes"] = $_POST["notes"];
-    */
+    let title = document.getElementById("calendar-title").innerText;
+    let json = JSON.stringify(Object.fromEntries(selected_dates));
+    let notes = document.getElementById("textarea").value;
+    console.log(document.getElementById("calendar-title").innerText);
     console.log(Object.fromEntries(selected_dates));
-});
+    console.log(document.getElementById("textarea").value);
+    
+    $.post("push_content.php", {title : title, json : json, notes : notes});
 
+});
 
 var curr_color = $(".selected-color").css("background-color");
 
