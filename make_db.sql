@@ -2,10 +2,9 @@ create database data;
 use data;
 
 CREATE TABLE IF NOT EXISTS `calendars` (
-	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  	`url` varchar(50) NOT NULL,
+  	`url` varchar(50) NOT NULL PRIMARY KEY,
   	`version_id` INTEGER NOT NULL,
-  	`no_versions` varchar(55) NOT NULL
+  	`no_versions` INTEGER NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `versions` (
@@ -16,29 +15,26 @@ CREATE TABLE IF NOT EXISTS `versions` (
   	`notes_id` varchar(55) NOT NULL
 );
 
-//i should search by int id instead to avoid confusion when the text is the same
-
-
-CREATE TABLE IF NOT EXISTS `json_table` (
+CREATE TABLE IF NOT EXISTS `jsontable` (
   	`json_id` varchar(55) NOT NULL PRIMARY KEY,
   	`json` varchar(1000) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `title_table` (
+CREATE TABLE IF NOT EXISTS `titletable` (
   	`title_id` varchar(55) NOT NULL PRIMARY KEY,
   	`title` varchar(1000) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `notes_table` (
+CREATE TABLE IF NOT EXISTS `notestable` (
   	`notes_id` varchar(55) NOT NULL PRIMARY KEY,
   	`notes` varchar(1000) NOT NULL
 );
 
-
-CREATE USER 'plan'@'localhost' IDENTIFIED BY 'password';
 GRANT INSERT, SELECT, UPDATE ON data. * TO 'plan'@'localhost';
 
 
+
+CREATE USER 'plan'@'localhost' IDENTIFIED BY 'password';
 
 
 -- create

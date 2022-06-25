@@ -126,14 +126,11 @@ function daysInMonth(iMonth, iYear) {
 }
 //END----------------------------------------------
 $(".post-btn").mousedown(function(){  
-    let title = document.getElementById("calendar-title").innerText;
+    let title = $(".calendar-title").val();
     let json = JSON.stringify(Object.fromEntries(selected_dates));
-    //const obj = Object.fromEntries(map1);
-    // { foo: 'bar', baz: 42 }
     let notes = document.getElementById("textarea").value;
-    $.post("push_content.php", {title : title, json : json, notes : notes}, function(status){
-        //console.log(status);
-        location.reload();  
+    $.post("../push_content.php", {title : title, json : json, notes : notes}, function(status){
+        console.log(status); 
     });
 });
 var curr_color = $(".selected-color").css("background-color");
