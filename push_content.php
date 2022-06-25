@@ -1,6 +1,9 @@
 <?php 
 session_start();
 
+
+
+
 function keygen()
 {
     $chars = "abcdefghijklmnopqrstuvwxyz";

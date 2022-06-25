@@ -103,6 +103,6 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
 </div>
 
 </body>
-<script type="text/javascript" src="jq.js"></script>
-<script type="text/javascript" src="calendar.js"></script>
+<script type="text/javascript" src="scripts/jq.js"></script>
+<script type="text/javascript" src="scripts/calendar.js"></script>
 </html>
