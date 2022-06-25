@@ -16,6 +16,9 @@ CREATE TABLE IF NOT EXISTS `versions` (
   	`notes_id` varchar(55) NOT NULL
 );
 
+//i should search by int id instead to avoid confusion when the text is the same
+
+
 CREATE TABLE IF NOT EXISTS `json_table` (
   	`json_id` varchar(55) NOT NULL PRIMARY KEY,
   	`json` varchar(1000) NOT NULL
