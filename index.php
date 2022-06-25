@@ -30,7 +30,7 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
 <body>
 
 <div class="first-wrap">
-    <form action="get_content.php" method="POST">
+    <form action="../get_content.php" method="POST">
         <input type="text" name="url" placeholder="url" id="url" required>
         <button type="SUBMIT">open url</button>
     </form>
