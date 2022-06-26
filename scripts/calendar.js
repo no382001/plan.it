@@ -142,6 +142,7 @@ $(".post-btn").mousedown(function(){
         console.log(status); 
     });
 });
+
 $(".alter-btn").mousedown(function(){  
     let url = document.getElementById("url-shown").textContent; 
     let title = $(".calendar-title").val();
@@ -149,5 +150,13 @@ $(".alter-btn").mousedown(function(){
     let notes = document.getElementById("textarea").value;
     $.post("../alter_existing.php", {url : url,title : title, json : json, notes : notes}, function(status){
         console.log(status); 
+    });
+});
+
+$(".get-btn").mousedown(function(){  
+    let url = document.getElementById("url").value; 
+    $.post("../get_content.php", {url : url}, function(status){
+        location.reload();
+        console.log(status);
     });
 });
