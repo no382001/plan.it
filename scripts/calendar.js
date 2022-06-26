@@ -125,6 +125,15 @@ function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
 //END----------------------------------------------
+var curr_color = $(".selected-color").css("background-color");
+$(".circle").mousedown(function(){
+    if(!$(this).hasClass("selected-color")){
+        $(".selected-color").removeClass("selected-color");
+        $(this).addClass("selected-color");
+        curr_color = $(this).css("background-color");
+    }
+});
+
 $(".post-btn").mousedown(function(){  
     let title = $(".calendar-title").val();
     let json = JSON.stringify(Object.fromEntries(selected_dates));
@@ -133,11 +142,12 @@ $(".post-btn").mousedown(function(){
         console.log(status); 
     });
 });
-var curr_color = $(".selected-color").css("background-color");
-$(".circle").mousedown(function(){
-    if(!$(this).hasClass("selected-color")){
-        $(".selected-color").removeClass("selected-color");
-        $(this).addClass("selected-color");
-        curr_color = $(this).css("background-color");
-    }
+$(".alter-btn").mousedown(function(){  
+    let url = document.getElementById("url-shown").textContent; 
+    let title = $(".calendar-title").val();
+    let json = JSON.stringify(Object.fromEntries(selected_dates));
+    let notes = document.getElementById("textarea").value;
+    $.post("../alter_existing.php", {url : url,title : title, json : json, notes : notes}, function(status){
+        console.log(status); 
+    });
 });

@@ -98,8 +98,9 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
         <button type="SUBMIT">clear session</button>
     </form>
     <button class="post-btn">push</button>
+    <button class="alter-btn">alter</button>
     <h1>url:</h1>
-    <a><?php echo $_SESSION['query-result']['url'];?></a>
+    <a id="url-shown"><?php echo $_SESSION['query-result']['url'];?></a>
 </div>
 
 </body>

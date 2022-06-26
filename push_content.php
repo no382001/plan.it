@@ -35,6 +35,7 @@ $notes_hash = hash('ripemd160', $_POST['notes']);
 
 //create their table elements
 $query = "INSERT INTO titletable VALUES (?,?);";
+echo $query."\n";
 if($stmt = $conn->prepare($query)){
     if(!$stmt->bind_param('ss', $title_hash,$_POST['title'])){
         echo "bind (" . $stmt->errno . ") " . $stmt->error;
@@ -48,6 +49,7 @@ if($stmt = $conn->prepare($query)){
 }
 
 $query = "INSERT INTO jsontable VALUES (?,?);";
+echo $query."\n";
 if($stmt = $conn->prepare($query)){
     if(!$stmt->bind_param('ss', $json_hash,$_POST['json'])){
         echo "bind (" . $stmt->errno . ") " . $stmt->error;
@@ -61,6 +63,7 @@ if($stmt = $conn->prepare($query)){
 }
 
 $query = "INSERT INTO notestable VALUES (?,?);";
+echo $query."\n";
 if($stmt = $conn->prepare($query)){
     if(!$stmt->bind_param('ss', $notes_hash,$_POST['notes'])){
         echo "bind (" . $stmt->errno . ") " . $stmt->error;
@@ -77,7 +80,8 @@ if($stmt = $conn->prepare($query)){
 //create new key for the calendar entry
 $url = keygen();
 //create version entry
-$query = "INSERT INTO versions VALUES (?,?,?,?,?);";
+$query = "INSERT INTO versions (url,version_id,title_id,json_id,notes_id) VALUES (?,?,?,?,?);";
+echo $query."\n";
 if($stmt = $conn->prepare($query)){
     $first = 1;
     if(!$stmt->bind_param('sisss', $url, $first, $title_hash, $json_hash, $notes_hash)){
@@ -93,6 +97,7 @@ if($stmt = $conn->prepare($query)){
 
 //create calendar entry 
 $query = "INSERT INTO calendars VALUES (?,?,?);";
+echo $query."\n";
 if($stmt = $conn->prepare($query)){
     $one = 1;
     if(!$stmt->bind_param('sii', $url, $one, $one)){

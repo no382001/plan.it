@@ -1,14 +1,13 @@
-create database data;
-use data;
-
+drop database data; create database data; use data;
 CREATE TABLE IF NOT EXISTS `calendars` (
   	`url` varchar(50) NOT NULL PRIMARY KEY,
   	`version_id` INTEGER NOT NULL,
   	`no_versions` INTEGER NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+);
 
 CREATE TABLE IF NOT EXISTS `versions` (
-  	`url` varchar(50) NOT NULL PRIMARY KEY,
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  	`url` varchar(50) NOT NULL,
   	`version_id` INTEGER NOT NULL,
   	`title_id` varchar(55) NOT NULL,
   	`json_id` varchar(55) NOT NULL,
@@ -31,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `notestable` (
 );
 
 GRANT INSERT, SELECT, UPDATE ON data. * TO 'plan'@'localhost';
+
 
 
 
