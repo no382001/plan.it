@@ -97,17 +97,20 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
     </form>
     <button class="post-btn">push</button>
     <button class="alter-btn">alter</button>
-    <h1>url:</h1>
-    <a id="url-shown"><?php echo $_SESSION['query-result']['url'];?></a>
-    <h1>versions:</h1>
-    <ul class="versions">
-        <?php 
-            for ($i = 1; $i <= 10; $i++) {
-                echo "<a class='version-href' href='#'>v.{$i}</a>";
-            };
-        ?>
-    </ul>
-<!--     <p2>10 versions are kept at the same time</p2> -->
+    <?php
+    if(isset($_SESSION['query-result'])){
+        echo "<h1>url:</h1>";
+        echo "<a id='url-shown'>{$_SESSION['query-result']['url']}</a>";
+        
+        echo '<h1>versions:</h1>';
+        echo '<ul class="versions">';
+        for ($i = 0; $i < $_SESSION['query-result']['no_versions']; $i++) {
+            echo "<a class='version-href' href='#'>v.{$i}</a>";
+        };
+        echo '</ul>';
+    }
+    
+    ?>
 </div>
 
 </body>
