@@ -12,6 +12,9 @@ if ( mysqli_connect_errno() ) {
 }
 
 $url = $_POST['url'];
+$title = $_POST['title'];
+$json = $_POST['json'];
+$notes = $_POST['notes'];
 
 //get version id for url
 $query = "SELECT version_id FROM calendars WHERE url=?;";
@@ -121,7 +124,7 @@ echo $changes."\n";
 //if there has been a change create a new version
 if($changes > 0){
     $version_id += 1;
-    $query = "INSERT INTO versions VALUES (?,?,?,?,?);";
+    $query = "INSERT INTO versions (url,version_id,title_id,json_id,notes_id) VALUES (?,?,?,?,?);";
 
     if($stmt = $conn->prepare($query)){
         if(!$stmt->bind_param('sisss',$_POST['url'],$version_id,$title_hash,$json_hash,$notes_hash)){
