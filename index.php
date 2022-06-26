@@ -30,10 +30,8 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
 <body>
 
 <div class="first-wrap">
-    <form action="get_content.php" method="POST">
         <input type="text" name="url" placeholder="url" id="url" required>
-        <button type="SUBMIT">open url</button>
-    </form>
+        <button class="get-btn">open url</button>
 </div>
 
 <div class="second-wrap">
@@ -98,11 +96,24 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
         <button type="SUBMIT">clear session</button>
     </form>
     <button class="post-btn">push</button>
-    <h1>url:</h1>
-    <a><?php echo $_SESSION['query-result']['url'];?></a>
+    <button class="alter-btn">alter</button>
+    <?php
+    if(isset($_SESSION['query-result'])){
+        echo "<h1>url:</h1>";
+        echo "<a id='url-shown'>{$_SESSION['query-result']['url']}</a>";
+        
+        echo '<h1>versions:</h1>';
+        echo '<ul class="versions">';
+        for ($i = 0; $i < $_SESSION['query-result']['no_versions']; $i++) {
+            echo "<a class='version-href' href='#'>v.{$i}</a>";
+        };
+        echo '</ul>';
+    }
+    
+    ?>
 </div>
 
 </body>
-<script type="text/javascript" src="jq.js"></script>
-<script type="text/javascript" src="calendar.js"></script>
+<script type="text/javascript" src="scripts/jq.js"></script>
+<script type="text/javascript" src="scripts/calendar.js"></script>
 </html>

@@ -125,17 +125,6 @@ function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
 //END----------------------------------------------
-$(".post-btn").mousedown(function(){  
-    let title = document.getElementById("calendar-title").innerText;
-    let json = JSON.stringify(Object.fromEntries(selected_dates));
-    //const obj = Object.fromEntries(map1);
-    // { foo: 'bar', baz: 42 }
-    let notes = document.getElementById("textarea").value;
-    $.post("push_content.php", {title : title, json : json, notes : notes}, function(status){
-        //console.log(status);
-        location.reload();  
-    });
-});
 var curr_color = $(".selected-color").css("background-color");
 $(".circle").mousedown(function(){
     if(!$(this).hasClass("selected-color")){
@@ -143,4 +132,41 @@ $(".circle").mousedown(function(){
         $(this).addClass("selected-color");
         curr_color = $(this).css("background-color");
     }
+});
+
+$(".post-btn").mousedown(function(){  
+    let title = $(".calendar-title").val();
+    let json = JSON.stringify(Object.fromEntries(selected_dates));
+    let notes = document.getElementById("textarea").value;
+    $.post("../push_content.php", {title : title, json : json, notes : notes}, function(status){
+        console.log(status); 
+    });
+});
+
+$(".alter-btn").mousedown(function(){  
+    let url = document.getElementById("url-shown").textContent; 
+    let title = $(".calendar-title").val();
+    let json = JSON.stringify(Object.fromEntries(selected_dates));
+    let notes = document.getElementById("textarea").value;
+    $.post("../alter_existing.php", {url : url,title : title, json : json, notes : notes}, function(status){
+        console.log(status); 
+    });
+});
+
+$(".get-btn").mousedown(function(){  
+    let url = document.getElementById("url").value; 
+    $.post("../get_content.php", {url : url}, function(status){
+        location.reload();
+        console.log(status);
+    });
+});
+
+$(".version-href").mousedown(function(){
+    let d = "v.";
+    let url = document.getElementById("url").value;
+    let version = $(this).text().replace(d,"");
+    $.post("../get_content.php", {url : url, version : version}, function(status){
+        location.reload();
+        console.log(status);
+    });
 });
