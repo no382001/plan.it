@@ -138,10 +138,34 @@ if($changes > 0){
         echo  "prepare ".$conn->errno .",". $conn->error;
     }
 
+    $query = "SELECT COUNT(id) FROM versions WHERE url=?";
+    if($stmt = $conn->prepare($query)){
+        if(!$stmt->bind_param('s', $url)){
+            echo "bind (" . $stmt->errno . ") " . $stmt->error;
+        }
+        $stmt->bind_result($no_versions);
+        $stmt->fetch();
+        $stmt->close();
+    }else{
+        echo  "prepare ".$conn->errno .",". $conn->error;
+    }
 
     $query = "UPDATE calendars SET version_id=? WHERE url=?;";
     if($stmt = $conn->prepare($query)){
-        if(!$stmt->bind_param('is',$version_id,$_POST['url'])){
+        if(!$stmt->bind_param('i',$version_id,$_POST['url'])){
+            echo "bind (" . $stmt->errno . ") " . $stmt->error;
+        }
+        if(!$stmt->execute()){
+            echo "execute (" . $stmt->errno . ") " . $stmt->error;
+        }
+        $stmt->close();
+    }else{
+        echo  "prepare ".$conn->errno .",". $conn->error;
+    }
+
+    $query = "UPDATE calendars SET no_versions=? WHERE url=?;";
+    if($stmt = $conn->prepare($query)){
+        if(!$stmt->bind_param('is',$no_versions,$_POST['url'])){
             echo "bind (" . $stmt->errno . ") " . $stmt->error;
         }
         if(!$stmt->execute()){
@@ -158,6 +182,8 @@ $_SESSION['query-result'] = [
     'url' => $url,
     'title' => $title,
     'json' => $json,
-    'notes' => $notes
+    'notes' => $notes,
+    'no_versions' => $no_versions,
+	'version' => $version_id
     ];
 ?>

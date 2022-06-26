@@ -83,7 +83,7 @@ $url = keygen();
 $query = "INSERT INTO versions (url,version_id,title_id,json_id,notes_id) VALUES (?,?,?,?,?);";
 //echo $query."\n";
 if($stmt = $conn->prepare($query)){
-    $first = 1;
+    $first = 0;
     if(!$stmt->bind_param('sisss', $url, $first, $title_hash, $json_hash, $notes_hash)){
         echo "bind (" . $stmt->errno . ") " . $stmt->error;
     }

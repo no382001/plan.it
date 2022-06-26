@@ -160,3 +160,13 @@ $(".get-btn").mousedown(function(){
         console.log(status);
     });
 });
+
+$(".version-href").mousedown(function(){
+    let d = "v.";
+    let url = document.getElementById("url").value;
+    let version = $(this).text().replace(d,"");
+    $.post("../get_content.php", {url : url, version : version}, function(status){
+        location.reload();
+        console.log(status);
+    });
+});

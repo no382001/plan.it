@@ -99,6 +99,15 @@ $session = (isset($_SESSION['query-result']))?$_SESSION['query-result']:'';
     <button class="alter-btn">alter</button>
     <h1>url:</h1>
     <a id="url-shown"><?php echo $_SESSION['query-result']['url'];?></a>
+    <h1>versions:</h1>
+    <ul class="versions">
+        <?php 
+            for ($i = 1; $i <= 10; $i++) {
+                echo "<a class='version-href' href='#'>v.{$i}</a>";
+            };
+        ?>
+    </ul>
+<!--     <p2>10 versions are kept at the same time</p2> -->
 </div>
 
 </body>
