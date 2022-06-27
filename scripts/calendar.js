@@ -157,16 +157,14 @@ $(".get-btn").mousedown(function(){
     let url = document.getElementById("url").value; 
     $.post("../get_content.php", {url : url}, function(status){
         location.reload();
-        console.log(status);
     });
 });
 
 $(".version-href").mousedown(function(){
     let d = "v.";
-    let url = document.getElementById("url").value;
+    let url = document.getElementById("url-shown").innerText;
     let version = $(this).text().replace(d,"");
     $.post("../get_content.php", {url : url, version : version}, function(status){
         location.reload();
-        console.log(status);
     });
 });

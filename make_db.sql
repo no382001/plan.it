@@ -31,37 +31,4 @@ CREATE TABLE IF NOT EXISTS `notestable` (
 
 GRANT INSERT, SELECT, UPDATE ON data. * TO 'plan'@'localhost';
 
-
-
-
 CREATE USER 'plan'@'localhost' IDENTIFIED BY 'password';
-
-
--- create
-CREATE TABLE EMPLOYEE (
-  empId INTEGER PRIMARY KEY,
-  name TEXT NOT NULL,
-  dept TEXT NOT NULL
-);
-CREATE TABLE dept (
-  empId INTEGER PRIMARY KEY,
-  name TEXT NOT NULL,
-  dept TEXT NOT NULL
-);
--- insert
-INSERT INTO EMPLOYEE VALUES (0001, 'Clark', 'Sales');
-INSERT INTO EMPLOYEE VALUES (0002, 'Dave', 'Accounting');
-INSERT INTO EMPLOYEE VALUES (0003, 'Ava', 'Sales');
-
-INSERT INTO dept VALUES (0001, 'dept', 'Sales');
-
--- fetch 
-SELECT * FROM EMPLOYEE inner join dept on EMPLOYEE.dept = dept.dept where EMPLOYEE.dept = "Sales";
-
-
-/* 
-empId	name	dept	empId	name	dept
-1	Clark	Sales	1	dept	Sales
-3	Ava	Sales	1	dept	Sales
-
- */

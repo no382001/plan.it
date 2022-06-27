@@ -19,15 +19,15 @@ try{
 }
 
 $url = $_POST['url'];
+
 //set to initial number
-$version = 1;
 //if post contains version
 if(isset($_POST['version'])){
-	$version = $_POST['version'];
+	$get_version = true;
 }
 
-// go about it normally <a> was not pressed, normal query for the latest version
-if($version == 1){
+// go about it normally as <a> was not pressed, normal query for the latest version
+if(!$get_version){
 	//get latest version number
 	$query = "SELECT version_id FROM calendars WHERE url=:url";
 	$stmt = $pdo->prepare($query);
@@ -37,7 +37,7 @@ if($version == 1){
 	$version_id = $stmt->fetchColumn();
 }else{
 	//if is other than 1, i.e. a query has been made with the version control <a>
-	$version_id = $version;
+	$version_id = $_POST['version'];
 }
 
 //this would probably be more efficient with inner join
@@ -47,6 +47,7 @@ $stmt->execute([
 	'url' => $url,
 	'version_id' => $version_id
 	]);
+
 $row = $stmt->fetch();
 $title_id = $row['title_id'];
 $json_id = $row['json_id'];
