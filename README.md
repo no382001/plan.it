@@ -1,4 +1,4 @@
-# plan.it [under construction]
+# plan.it
 pastebin inspired tool for quick planning of group events!
 <br>
-![plan](https://user-images.githubusercontent.com/102482527/175420496-87c677d4-ab51-4b3f-9935-f90e53e76f1e.png)
+![Screenshot_2022-06-27_21-50-06](https://user-images.githubusercontent.com/102482527/176023968-51de8d5a-dc5a-462d-93ed-0ef0f1c629c9.png)
